@@ -1,3 +1,7 @@
 #quote-list {
   padding: 20px;
 }
+
+.hidden-form {
+  visibility: hidden;
+}
