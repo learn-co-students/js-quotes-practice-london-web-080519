@@ -86,20 +86,23 @@ likesButtonHandler = (quote) => {
     API.post(LIKES_URL, { quoteId } ).then(response => updateLikesOnClient(response))
 }
 
-deleteButtonHandler = (quote) => {
-    console.log(quote)
-}
-
-removeQuoteFromPage = (quote) => {
-
-}
-
 updateLikesOnClient = quote => {
     let liSpan = document.querySelector(`li[data-id="${quote.quoteId}"] span`)
     let updatedLikes = parseInt(liSpan.innerText)
     updatedLikes++
     liSpan.innerText = updatedLikes
 }
+
+deleteButtonHandler = (quote) => {
+    //let passQuote = quote
+    API.destroy(QUOTES_URL, quote.id).then(removeQuoteFromClient(quote))
+}
+
+removeQuoteFromClient = (response) => {
+    let liSpan = document.querySelector(`li[data-id="${response.id}"]`)
+    liSpan.remove()
+}
+
 
 
 // It might be a good idea to add event listener to make sure this file 
