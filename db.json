@@ -14,6 +14,18 @@
       "id": 6,
       "quote": "Do the best you can in every task, no matter how unimportant it may seem at the time. No one learns more about a problem than the person at the bottom.",
       "author": "Sandra Day O'Connor"
+    },
+    {
+      "quote": "QUOTE",
+      "author": "AUTHOR",
+      "likes": [],
+      "id": 7
+    },
+    {
+      "quote": "another quote!!",
+      "author": "meeeeee",
+      "likes": [],
+      "id": 11
     }
   ],
   "likes": [
@@ -32,6 +44,14 @@
     {
       "quoteId": 4,
       "id": 24
+    },
+    {
+      "quoteId": 11,
+      "id": 25
+    },
+    {
+      "quoteId": 11,
+      "id": 26
     }
   ]
 }

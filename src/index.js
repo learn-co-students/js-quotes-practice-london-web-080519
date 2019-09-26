@@ -41,10 +41,24 @@ const newQuoteForm = document.querySelector("form#new-quote-form")
 
 // FUNCTIONS
 
+submitNewQuote = (event) => {
+    event.preventDefault();
+    let newQuote = {
+        quote: event.target.querySelector("input#new-quote").value,
+        author: event.target.querySelector("input#author").value,
+        likes: []
+    }
+    API.post(QUOTES_URL, newQuote).then((quote) => {
+        event.target.reset()
+        putOnCard(quote)
+    })
+}
+
+newQuoteForm.addEventListener("submit", submitNewQuote, false)
+
 getAndRenderQuotes = () => {
     API.get(`${QUOTES_URL}/?_embed=likes`).then(quotes => quotes.map(aQuote=> putOnCard(aQuote)))
 }
-
 
 putOnCard = (singleQuote) => {
     let li = document.createElement("li")
@@ -83,6 +97,7 @@ putOnCard = (singleQuote) => {
 
 likesButtonHandler = (quote) => {
     let quoteId = parseInt(quote.id)
+    // event.timeStamp
     API.post(LIKES_URL, { quoteId } ).then(response => updateLikesOnClient(response))
 }
 
@@ -102,6 +117,7 @@ removeQuoteFromClient = (response) => {
     let liSpan = document.querySelector(`li[data-id="${response.id}"]`)
     liSpan.remove()
 }
+
 
 
 
